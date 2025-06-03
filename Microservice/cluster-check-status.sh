@@ -10,15 +10,6 @@ ACCOUNT_ID="601672255921"
 NAMESPACE="webapps"
 SECRET_NAME="mysecretname"
 
-# Step 1: Provide RBAC Admin Access
-echo "[INFO] Creating IAM Identity Mapping..."
-/usr/local/bin/eksctl create iamidentitymapping \
-  --cluster "$CLUSTER_NAME" \
-  --region "$REGION" \
-  --arn "arn:aws:iam::${ACCOUNT_ID}:root" \
-  --group system:masters \
-  --username admin
-
 # Step 2: Update Kubeconfig
 echo "[INFO] Updating kubeconfig for the cluster..."
 /usr/bin/aws eks update-kubeconfig --region "$REGION" --name "$CLUSTER_NAME"
@@ -30,6 +21,16 @@ echo "[INFO] Setting kubectl context..."
 # Step 4: Check Current Resources
 echo "[INFO] Fetching kube-system resources..."
 /usr/local/bin/kubectl -n kube-system get all
+
+# Step 1: Provide RBAC Admin Access
+echo "[INFO] Creating IAM Identity Mapping..."
+/usr/local/bin/eksctl create iamidentitymapping \
+  --cluster "$CLUSTER_NAME" \
+  --region "$REGION" \
+  --arn "arn:aws:iam::${ACCOUNT_ID}:root" \
+  --group system:masters \
+  --username admin
+
 
 # Step 5: Create Namespace
 echo "[INFO] Creating namespace: $NAMESPACE..."
