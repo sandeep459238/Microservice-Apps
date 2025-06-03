@@ -12,7 +12,7 @@ SECRET_NAME="mysecretname"
 
 # Step 2: Update Kubeconfig
 echo "[INFO] Updating kubeconfig for the cluster..."
-/usr/bin/aws eks update-kubeconfig --region "$REGION" --name "$CLUSTER_NAME"
+/usr/local/bin/aws eks update-kubeconfig --region "$REGION" --name "$CLUSTER_NAME"
 
 # Step 3: Set Kubectl Context
 echo "[INFO] Setting kubectl context..."
