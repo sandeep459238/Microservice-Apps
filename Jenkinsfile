@@ -42,8 +42,8 @@ pipeline {
                     } else if (params.Terraform_Action == 'apply') {
                         sh "terraform -chdir=dev-eks/ apply -var-file=${params.Environment}.tfvars -auto-approve"
                         // Run post-cluster creation script
-                        sh "chmod +x microservice/cluster-check-status.sh"
-                        sh "bash microservice/cluster-check-status.sh"
+                        sh "chmod +x Microservice/cluster-check-status.sh"
+                        sh "bash Microservice/cluster-check-status.sh"
                     } else if (params.Terraform_Action == 'destroy') {
                         sh "terraform -chdir=dev-eks/ destroy -var-file=${params.Environment}.tfvars -auto-approve"
                     } else {
