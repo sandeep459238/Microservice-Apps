@@ -27,7 +27,7 @@ echo "[INFO] Creating IAM Identity Mapping..."
 /usr/local/bin/eksctl create iamidentitymapping \
   --cluster "$CLUSTER_NAME" \
   --region "$REGION" \
-  --arn "arn:aws:iam::${ACCOUNT_ID}:rootrole/EKSAdminRole" \
+  --arn "arn:aws:iam::${ACCOUNT_ID}:role/EKSAdminRole" \
   --group system:masters \
   --username admin
 
