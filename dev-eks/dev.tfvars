@@ -19,7 +19,7 @@ eks-sg                = "eks-sg"
 
 # EKS
 is-eks-cluster-enabled     = true
-cluster-version            = "1.32"
+cluster-version            = "1.33"
 cluster-name               = "eks-cluster"
 endpoint-private-access    = true
 endpoint-public-access     = false
@@ -42,7 +42,7 @@ addons = [
   },
   {
     name    = "kube-proxy"
-    version = "v1.32.3-eksbuild.7"
+    version = "v1.33.0-eksbuild.2"
   },
   {
     name    = "aws-ebs-csi-driver"
